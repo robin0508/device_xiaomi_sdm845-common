@@ -1,0 +1,8 @@
+set_prop(system_app, thermal_prop);
+get_prop(system_app, thermal_prop);
+set_prop(system_app, perf_prop);
+get_prop(system_app, perf_prop);
+set_prop(system_app, defaultthermal_prop);
+get_prop(system_app, defaultthermal_prop);
+set_prop(system_app, defaultperf_prop);
+get_prop(system_app, defaultperf_prop);

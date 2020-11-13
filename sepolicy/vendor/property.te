@@ -9,3 +9,20 @@ type vendor_fp_prop, property_type;
 # Dolby
 type vendor_dolby_loglevel_prop, property_type;
 
+type cputhermal_prop, property_type;
+type cpuperf_prop, property_type;
+
+compatible_property_only(`
+    system_restricted_prop(thermal_prop)
+    system_restricted_prop(perf_prop)
+    system_restricted_prop(defaultthermal_prop)
+    system_restricted_prop(defaultperf_prop)
+')
+
+not_compatible_property(`
+    system_public_prop(thermal_prop)
+    system_public_prop(perf_prop)
+    system_public_prop(defaultthermal_prop)
+    system_public_prop(defaultperf_prop)
+')
+

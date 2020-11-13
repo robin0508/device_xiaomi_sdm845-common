@@ -7,7 +7,16 @@ allow vendor_init sysfs_devices_system_cpu:file create;
 allow vendor_init sysfs_scsi_host:file create;
 allow vendor_init sysfs_ssr_toggle:file w_file_perms;
 
+
+
 userdebug_or_eng(`
 allow vendor_init persist_debug_prop:file read;
 allow vendor_init tombstone_data_file:dir { getattr ioctl open read };
 ')
+set_prop(vendor_init, cpuperf_prop)
+set_prop(vendor_init, cputhermal_prop)
+get_prop(vendor_init, thermal_prop)
+get_prop(vendor_init, perf_prop)
+get_prop(vendor_init, defaultthermal_prop)
+get_prop(vendor_init, defaultperf_prop)
+

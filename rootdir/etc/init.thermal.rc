@@ -1,0 +1,52 @@
+on boot
+
+# Balance (default profile)
+on property:persist.thermal.profile=0
+    setprop sys.qcom.thermalcfg "/vendor/etc/thermal-engine.conf"
+    stop thermal-engine
+    start thermal-engine
+    setprop "persist.cpu.thermal.profile" "balance"     
+
+# High
+on property:persist.thermal.profile=4
+    setprop sys.qcom.thermalcfg "/vendor/etc/thermal-engine-evaluation.conf"
+    stop thermal-engine
+    start thermal-engine
+    setprop "persist.cpu.thermal.profile" "nolimits" 
+ 
+    
+# Cool
+on property:persist.thermal.profile=2
+    setprop sys.qcom.thermalcfg "/vendor/etc/thermal-engine-extreme.conf"
+    stop thermal-engine
+    start thermal-engine
+    setprop "persist.cpu.thermal.profile" "cool" 
+
+# Gaming
+on property:persist.thermal.profile=5
+    setprop sys.qcom.thermalcfg "/vendor/etc/thermal-engine-game.conf"
+    stop thermal-engine
+    start thermal-engine
+    setprop "persist.cpu.thermal.profile" "gaming" 
+
+# Gaming 2  - PUBG HD
+on property:persist.thermal.profile=1
+    setprop sys.qcom.thermalcfg "/vendor/etc/thermal-engine-game2.conf"
+    stop thermal-engine
+    start thermal-engine
+    setprop "persist.cpu.thermal.profile" "gaming2"     
+    
+# Camera
+on property:persist.thermal.profile=3
+    setprop sys.qcom.thermalcfg "/vendor/etc/thermal-engine-camera.conf"
+    stop thermal-engine
+    start thermal-engine
+    setprop "persist.cpu.thermal.profile" "camera" 
+
+# VR
+on property:persist.thermal.profile=6
+    setprop sys.qcom.thermalcfg "/vendor/etc/thermal-engine-arvr.conf"
+    stop thermal-engine
+    start thermal-engine
+    setprop "persist.cpu.thermal.profile" "video"       
+

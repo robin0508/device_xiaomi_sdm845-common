@@ -11,3 +11,9 @@ get_prop(system_server, persist_camera_prop)
 userdebug_or_eng(`
 allow system_server vendor_wfd_sys_debug_prop:file { getattr open read };
 ')
+
+set_prop(system_server, defaultthermal_prop);
+get_prop(system_server, defaultthermal_prop);
+set_prop(system_server, defaultperf_prop);
+get_prop(system_server, defaultperf_prop);
+
