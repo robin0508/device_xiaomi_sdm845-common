@@ -20,4 +20,6 @@ get_prop(vendor_init, thermal_prop)
 get_prop(vendor_init, perf_prop)
 get_prop(vendor_init, defaultthermal_prop)
 get_prop(vendor_init, defaultperf_prop)
-
+get_prop(vendor_init, nvt_prop)
+get_prop(vendor_init, esd_prop)
+get_prop(vendor_init, dolby_prop)

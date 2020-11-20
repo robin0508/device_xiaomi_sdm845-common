@@ -122,4 +122,17 @@
     <string name="xiaomi_display_enhance">Enhance</string>
     <string name="xiaomi_display_standard">Standard</string>
 
+    <!--   Touch options  -->
+    <string name="touch_title">TouchScreen</string>
+    <string name="nvt_fw_title">Touch Firmware</string>
+    <string name="nvt_fw_summary">Use 9.1.24 version of Novatek firmware for touch panel(Only for users who have NVT Touch screen)</string>
+    
+    <string name="nvt_esd_title">ESD protection</string>
+    <string name="nvt_esd_summary">Enable ESD protection feature</string>
+
+    <!--   Dolby  -->
+    <string name="audio_effects_title">Effects</string>
+    <string name="audio_effects_dolby_title">Enable Dolby</string>
+    <string name="audio_effects_dolby_summary">Enable systemwide Dolby effect (Requires Reboot )</string>
+
     </resources>

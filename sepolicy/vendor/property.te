@@ -18,6 +18,9 @@ compatible_property_only(`
     system_restricted_prop(perf_prop)
     system_restricted_prop(defaultthermal_prop)
     system_restricted_prop(defaultperf_prop)
+    system_restricted_prop(nvt_prop)
+    system_restricted_prop(esd_prop)
+    system_restricted_prop(dolby_prop)
 ')
 
 not_compatible_property(`
@@ -25,5 +28,8 @@ not_compatible_property(`
     system_public_prop(perf_prop)
     system_public_prop(defaultthermal_prop)
     system_public_prop(defaultperf_prop)
+    system_public_prop(nvt_prop)
+    system_public_prop(esd_prop)
+    system_public_prop(dolby_prop)
 ')
 

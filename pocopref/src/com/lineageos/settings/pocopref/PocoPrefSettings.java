@@ -48,13 +48,21 @@ public class PocoPrefSettings extends PreferenceFragment implements
     public static final String DEFAULT_PERF_PROFILE = "default_perf_profile";
     public static final String PERFORMANCE_SYSTEM_PROPERTY = "persist.perf.default";
     public static final String DEFAULT_THERMAL_PROFILE = "default_therm_profile";
-    public static final String THERMAL_SYSTEM_PROPERTY = "persist.therm.default";    
+    public static final String THERMAL_SYSTEM_PROPERTY = "persist.therm.default";
+    private static final String SYSTEM_PROPERTY_NVT_FW = "persist.nvt_fw";
+    private static final String SYSTEM_PROPERTY_NVT_ESD = "persist.nvt_esd";
+    private static final String SYSTEM_PROPERTY_DOLBY = "persist.dolby.enable";
+
     private Context mContext;
     private Preference mThermPref;
     private Preference mPerfPref;
     private Preference mKcal;
+    private SwitchPreference mDolby;
     private SecureSettingListPreference mDefaultPerfProfile;
     private SecureSettingListPreference mDefaultThermProfile;
+    private SwitchPreference mNvtFw;
+    private SwitchPreference mNvtESD;
+
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         setPreferencesFromResource(R.xml.poco_settings, rootKey);	
@@ -98,9 +106,18 @@ public class PocoPrefSettings extends PreferenceFragment implements
             mDefaultThermProfile.setValue(FileUtils.getStringProp(THERMAL_SYSTEM_PROPERTY, "0"));
             mDefaultThermProfile.setOnPreferenceChangeListener(this);
 
+            mNvtFw = (SwitchPreference) findPreference(SYSTEM_PROPERTY_NVT_FW);
+            mNvtFw.setChecked(SystemProperties.getBoolean(SYSTEM_PROPERTY_NVT_FW, false));
+            mNvtFw.setOnPreferenceChangeListener(this);
 
-}
+            mNvtESD = (SwitchPreference) findPreference(SYSTEM_PROPERTY_NVT_ESD);
+            mNvtESD.setChecked(SystemProperties.getBoolean(SYSTEM_PROPERTY_NVT_ESD, false));
+            mNvtESD.setOnPreferenceChangeListener(this);
 
+            mDolby = (SwitchPreference) findPreference(SYSTEM_PROPERTY_DOLBY);
+            mDolby.setChecked(SystemProperties.getBoolean(SYSTEM_PROPERTY_DOLBY, false));
+            mDolby.setOnPreferenceChangeListener(this);
+     }
 
     private void setSystemPropertyBoolean(String key, boolean value) {
         String text = value?"1":"0";
@@ -120,6 +137,21 @@ public class PocoPrefSettings extends PreferenceFragment implements
                 mDefaultThermProfile.setValue((String) value);
                 FileUtils.setStringProp(THERMAL_SYSTEM_PROPERTY, (String) value);
                 break;               
+
+            case SYSTEM_PROPERTY_NVT_FW:
+                ((SwitchPreference)preference).setChecked((Boolean) value);
+                setSystemPropertyBoolean(SYSTEM_PROPERTY_NVT_FW, (Boolean) value);
+                break;
+
+            case SYSTEM_PROPERTY_NVT_ESD:
+                ((SwitchPreference)preference).setChecked((Boolean) value);
+                setSystemPropertyBoolean(SYSTEM_PROPERTY_NVT_ESD, (Boolean) value);
+                break;
+
+            case SYSTEM_PROPERTY_DOLBY:
+                ((SwitchPreference)preference).setChecked((Boolean) value);
+                setSystemPropertyBoolean(SYSTEM_PROPERTY_DOLBY, (Boolean) value);
+                break;
                                 
             default:				
                 break;

@@ -48,6 +48,9 @@ persist.thermal.profile                       u:object_r:thermal_prop:s0
 persist.performance.profile                   u:object_r:perf_prop:s0
 persist.therm.default                          u:object_r:defaultthermal_prop:s0
 persist.perf.default                           u:object_r:defaultperf_prop:s0
+persist.nvt_fw                           u:object_r:nvt_prop:s0
+persist.nvt_esd                           u:object_r:esd_prop:s0
+persist.dolby.enable                           u:object_r:dolby_prop:s0
 persist.cpu.thermal.profile                    u:object_r:cputhermal_prop:s0
 persist.cpu.performance.profile                    u:object_r:cpuperf_prop:s0
 

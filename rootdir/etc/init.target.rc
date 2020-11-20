@@ -616,3 +616,14 @@ on property:persist.sys.device_provisioned=1
     setprop dalvik.vm.dex2oat-cpu-set 0,1,2,3,6,7
     setprop dalvik.vm.dex2oat-threads 6
 
+on property:persist.nvt_fw=true
+    write /sys/module/nt36xxx/parameters/fw_variant 1
+
+on property:persist.nvt_fw=false
+    write /sys/module/nt36xxx/parameters/fw_variant 0
+    
+on property:persist.nvt_esd=true
+    write /sys/module/nt36xxx/parameters/esd_check_enable 1
+
+on property:persist.nvt_esd=false
+    write /sys/module/nt36xxx/parameters/esd_check_enable 0   

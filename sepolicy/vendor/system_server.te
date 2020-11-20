@@ -16,4 +16,10 @@ set_prop(system_server, defaultthermal_prop);
 get_prop(system_server, defaultthermal_prop);
 set_prop(system_server, defaultperf_prop);
 get_prop(system_server, defaultperf_prop);
+set_prop(system_server, nvt_prop);
+get_prop(system_server, nvt_prop);
+set_prop(system_server, esd_prop);
+get_prop(system_server, esd_prop);
+set_prop(system_server, dolby_prop);
+get_prop(system_server, dolby_prop);
 
