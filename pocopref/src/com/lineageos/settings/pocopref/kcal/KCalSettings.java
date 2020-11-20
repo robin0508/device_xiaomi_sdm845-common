@@ -122,6 +122,7 @@ public class KCalSettings extends PreferenceFragment implements
            FileUtils.WriteValue(COLOR_FILE_CONT, storedContrast + CONTRAST_OFFSET);
            FileUtils.WriteValue(COLOR_FILE_VAL, storedValue + VALUE_OFFSET);
            FileUtils.WriteValue(COLOR_FILE_HUE, storedHue);
+           setScreenEffect( 0, 3);           
        }
     }                 
                                  
@@ -151,41 +152,49 @@ public class KCalSettings extends PreferenceFragment implements
                 FileUtils.WriteValue(COLOR_FILE_CONT, Integer.parseInt(Cont) + CONTRAST_OFFSET);
                 FileUtils.WriteValue(COLOR_FILE_VAL, Integer.parseInt(Value) + VALUE_OFFSET);
                 FileUtils.WriteValue(COLOR_FILE_HUE, Integer.parseInt(hue));                                                         
+                setScreenEffect( 0, 3);
                 break;
 
             case PREF_RED:
                 mPrefs.edit().putInt(PREF_RED, (int) value).apply();            
                 mFileUtils.setValue(COLOR_FILE_RED, (int) value);
+                setScreenEffect( 0, 3);
                 break;
 
             case PREF_GREEN:
                 mPrefs.edit().putInt(PREF_GREEN, (int) value).apply();          
                 mFileUtils.setValue(COLOR_FILE_GREEN, (int) value);
+                setScreenEffect( 0, 3);
                 break;
 
             case PREF_BLUE:
                 mPrefs.edit().putInt(PREF_BLUE, (int) value).apply();            
                 mFileUtils.setValue(COLOR_FILE_BLUE, (int) value);
+                setScreenEffect( 0, 3);
                 break;
 
             case PREF_SATURATION:
                 mPrefs.edit().putInt(PREF_SATURATION, (int) value).apply();            
                 mFileUtils.setValue(COLOR_FILE_SAT, (int) value + SATURATION_OFFSET);
+                setScreenEffect( 0, 3);
                 break;
 
             case PREF_VALUE:
                 mPrefs.edit().putInt(PREF_VALUE, (int) value).apply();             
                 mFileUtils.setValue(COLOR_FILE_VAL, (int) value + VALUE_OFFSET);
-                 break;
+                setScreenEffect( 0, 3);
+                break;
 
             case PREF_CONTRAST:
                 mPrefs.edit().putInt(PREF_CONTRAST, (int) value).apply();              
                 mFileUtils.setValue(COLOR_FILE_CONT, (int) value + CONTRAST_OFFSET);
+                setScreenEffect( 0, 3);                
                 break;
 
             case PREF_HUE:
                 mPrefs.edit().putInt(PREF_HUE, (int) value).apply();            
                 mFileUtils.setValue(COLOR_FILE_HUE, (int) value);
+                setScreenEffect( 0, 3);                
                 break;
 
             default:
