@@ -21,6 +21,7 @@ import androidx.preference.SwitchPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
 import androidx.preference.SwitchPreference;
+import com.lineageos.settings.pocopref.kcal.KCalSettingsActivity;
 import com.lineageos.settings.pocopref.SecureSettingListPreference;
 
 import android.provider.Settings;
@@ -42,6 +43,8 @@ public class PocoPrefSettings extends PreferenceFragment implements
         Preference.OnPreferenceChangeListener {
 	private static final boolean DEBUG = false;
 	private static final String TAG = "PocoPref";
+    public static final String PREF_DEVICE_KCAL = "device_kcal";
+    public static final String CATEGORY_DISPLAY = "display";    
     public static final String DEFAULT_PERF_PROFILE = "default_perf_profile";
     public static final String PERFORMANCE_SYSTEM_PROPERTY = "persist.perf.default";
     public static final String DEFAULT_THERMAL_PROFILE = "default_therm_profile";
@@ -49,6 +52,7 @@ public class PocoPrefSettings extends PreferenceFragment implements
     private Context mContext;
     private Preference mThermPref;
     private Preference mPerfPref;
+    private Preference mKcal;
     private SecureSettingListPreference mDefaultPerfProfile;
     private SecureSettingListPreference mDefaultThermProfile;
     @Override
@@ -56,6 +60,17 @@ public class PocoPrefSettings extends PreferenceFragment implements
         setPreferencesFromResource(R.xml.poco_settings, rootKey);	
         mContext = this.getContext();
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(mContext);
+
+        PreferenceCategory displayCategory = (PreferenceCategory) findPreference(CATEGORY_DISPLAY);
+
+        mKcal = findPreference(PREF_DEVICE_KCAL);
+
+        mKcal.setOnPreferenceClickListener(preference -> {
+            Intent intent = new Intent(getActivity().getApplicationContext(), KCalSettingsActivity.class);
+            startActivity(intent);
+            return true;
+        });		
+		
              mThermPref = findPreference("therm_display");
                 mThermPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
                      @Override

@@ -54,5 +54,7 @@
                                                                        u:object_r:thermal_data_file:s0
 
 # Dolby
-/(vendor|system/vendor)/bin/hw/vendor\.dolby\.hardware\.dms@1\.0-service                     u:object_r:hal_dms_default_exec:s0
+/(vendor|system/vendor)/bin/hw/vendor\.dolby\.hardware\.dms@1\.0-service                   u:object_r:hal_dms_default_exec:s0
 
+# Kcal
+/sys/module/msm_drm/parameters(/.*)?            u:object_r:kcal_dev:s0

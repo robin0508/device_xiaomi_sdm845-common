@@ -51,7 +51,17 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.lineageos.settings.pocopref.kcal.KCalSettingsActivity"
+            android:exported="false"
+            android:theme="@style/CustomOptionsTheme"
+            android:label="@string/advanced_settings_kcal">
 
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <service
             android:name="com.lineageos.settings.pocopref.ThermalService"
             android:permission="ThermalService">

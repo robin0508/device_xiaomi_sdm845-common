@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <PreferenceCategory
+        android:key="display"
+        android:title="@string/display_title">
+
+        <Preference
+        android:key="device_kcal"
+        android:persistent="false"
+        android:icon="@drawable/ic_kcal"
+        android:title="@string/device_kcal_title"
+        android:summary="@string/kcal_enabled_summary">
+        <intent
+        android:action="android.intent.action.MAIN"
+        android:targetClass="com.lineageos.settings.pocopref.kcal.KCalSettingsActivity"
+        android:targetPackage="com.lineageos.settings.pocopref.kcal" />
+      </Preference>
+  </PreferenceCategory>
+
   <PreferenceCategory
         android:title="@string/thermal_title">
 

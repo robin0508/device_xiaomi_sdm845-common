@@ -20,6 +20,7 @@ package com.lineageos.settings.pocopref;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import com.lineageos.settings.pocopref.kcal.KCalSettings;
 
 public class Startup extends BroadcastReceiver {
 
@@ -27,5 +28,7 @@ public class Startup extends BroadcastReceiver {
     public void onReceive(final Context context, final Intent bootintent) {
         ThermalUtils.startService(context);
         PerformanceUtils.startService(context);
+        KCalSettings.restore(context);	                
+
     }
 }
