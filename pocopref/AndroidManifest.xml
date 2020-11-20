@@ -26,7 +26,7 @@
         android:label="@string/pocopref_title"
         android:theme="@android:style/Theme.DeviceDefault.Settings">
         <activity
-            android:name=".PocoPrefSettings"
+            android:name=".PocoPrefSettingsActivity"
             android:label="@string/pocopref_title"
             android:theme="@android:style/Theme.DeviceDefault.Settings">
             <intent-filter>

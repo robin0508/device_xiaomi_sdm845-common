@@ -27,7 +27,7 @@
         android:key="default_profiles"
         android:title="@string/default_profiles_title">
 
-        <ListPreference
+        <com.lineageos.settings.pocopref.SecureSettingListPreference
         android:key="default_perf_profile"
         android:title="@string/app_profile_performance_title"
         android:entries="@array/default_perf_listentries"
@@ -35,7 +35,7 @@
         android:defaultValue="0"
         android:summary="%s"/>
 
-        <ListPreference
+        <com.lineageos.settings.pocopref.SecureSettingListPreference
          android:key="default_therm_profile"
          android:title="@string/app_profile_thermal_title"
          android:entries="@array/default_therm_listentries"

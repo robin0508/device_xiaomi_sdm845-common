@@ -15,13 +15,14 @@ import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.Intent;
 import android.os.Bundle;
-import android.preference.Preference;
-import android.preference.Preference.OnPreferenceChangeListener;
-import android.preference.PreferenceActivity;
-import android.preference.PreferenceScreen;
-import android.preference.SwitchPreference;
-import android.preference.Preference.OnPreferenceClickListener;
-import android.preference.PreferenceScreen;
+import androidx.preference.PreferenceFragment;
+import androidx.preference.PreferenceManager;
+import androidx.preference.SwitchPreference;
+import androidx.preference.Preference;
+import androidx.preference.PreferenceCategory;
+import androidx.preference.SwitchPreference;
+import com.lineageos.settings.pocopref.SecureSettingListPreference;
+
 import android.provider.Settings;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -34,29 +35,32 @@ import android.util.Log;
 import android.os.SystemProperties;
 import java.io.*;
 import android.widget.Toast;
-import android.preference.ListPreference;
 
 import com.lineageos.settings.pocopref.R;
 
-public class PocoPrefSettings extends PreferenceActivity implements OnPreferenceChangeListener {
+public class PocoPrefSettings extends PreferenceFragment implements
+        Preference.OnPreferenceChangeListener {
 	private static final boolean DEBUG = false;
 	private static final String TAG = "PocoPref";
+    public static final String DEFAULT_PERF_PROFILE = "default_perf_profile";
+    public static final String PERFORMANCE_SYSTEM_PROPERTY = "persist.perf.default";
+    public static final String DEFAULT_THERMAL_PROFILE = "default_therm_profile";
+    public static final String THERMAL_SYSTEM_PROPERTY = "persist.therm.default";    
     private Context mContext;
-    private SharedPreferences mPreferences;
     private Preference mThermPref;
     private Preference mPerfPref;
-    private ListPreference mDefaultPerfProfile;
-    private ListPreference mDefaultThermProfile;
-
+    private SecureSettingListPreference mDefaultPerfProfile;
+    private SecureSettingListPreference mDefaultThermProfile;
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        addPreferencesFromResource(R.xml.poco_settings);
+    public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
+        setPreferencesFromResource(R.xml.poco_settings, rootKey);	
+        mContext = this.getContext();
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(mContext);
              mThermPref = findPreference("therm_display");
                 mThermPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
                      @Override
                      public boolean onPreferenceClick(Preference preference) {
-                         Intent intent = new Intent(getApplicationContext(), ThermalActivity.class);
+                         Intent intent = new Intent(getContext(), ThermalActivity.class);
                          startActivity(intent);
                          return true;
                      }
@@ -65,104 +69,46 @@ public class PocoPrefSettings extends PreferenceActivity implements OnPreference
                 mPerfPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
                      @Override
                      public boolean onPreferenceClick(Preference preference) {
-                         Intent intent = new Intent(getApplicationContext(), PerformanceActivity.class);
+                         Intent intent = new Intent(getContext(), PerformanceActivity.class);
                          startActivity(intent);
                          return true;
                      }
                 });
 
-        mContext = getApplicationContext();
+            mDefaultPerfProfile = (SecureSettingListPreference) findPreference(DEFAULT_PERF_PROFILE);
+            mDefaultPerfProfile.setValue(FileUtils.getStringProp(PERFORMANCE_SYSTEM_PROPERTY, "0"));
+            mDefaultPerfProfile.setOnPreferenceChangeListener(this);            
 
-            mDefaultPerfProfile = (ListPreference) findPreference("default_perf_profile");
-            if( mDefaultPerfProfile != null ) {
-                    String profile = getSystemPropertyString("persist.perf.default","0");
-                    Log.e(TAG, "mDefaultPerfProfile: getProfile=" + profile);
-                    mDefaultPerfProfile.setValue(profile);
-                    mDefaultPerfProfile.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-                      public boolean onPreferenceChange(Preference preference, Object newValue) {
-                        try {
-                            Log.e(TAG, "mDefaultPerfProfile: setProfile=" + newValue.toString());
-			                setSystemPropertyString("persist.perf.default",newValue.toString());
-                        } catch(Exception re) {
-                            Log.e(TAG, "onCreate: mDefaultPerfProfile Fatal! exception", re );
-                        }
-                        return true;
-                      }
-                    });
-                }
-
-            mDefaultThermProfile = (ListPreference) findPreference("default_therm_profile");
-            if( mDefaultThermProfile != null ) {
-                    String profile = getSystemPropertyString("persist.therm.default","0");
-                    Log.e(TAG, "mDefaultThermProfile: getProfile=" + profile);
-                    mDefaultThermProfile.setValue(profile);
-                    mDefaultThermProfile.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-                      public boolean onPreferenceChange(Preference preference, Object newValue) {
-                        try {
-                            Log.e(TAG, "mDefaultThermProfile: setProfile=" + newValue.toString());
-			                setSystemPropertyString("persist.therm.default",newValue.toString());
-                        } catch(Exception re) {
-                            Log.e(TAG, "onCreate: mDefaultPerfProfile Fatal! exception", re );
-                        }
-                        return true;
-                      }
-                    });
-                }
+            mDefaultThermProfile = (SecureSettingListPreference) findPreference(DEFAULT_THERMAL_PROFILE);
+            mDefaultThermProfile.setValue(FileUtils.getStringProp(THERMAL_SYSTEM_PROPERTY, "0"));
+            mDefaultThermProfile.setOnPreferenceChangeListener(this);
 
 
 }
 
-    private void setEnable(String key, boolean value) {
-	if(value) {
- 	      SystemProperties.set(key, "1");
-    	} else {
-    		SystemProperties.set(key, "0");
-    	}
-    	if (DEBUG) Log.d(TAG, key + " setting changed");
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            onBackPressed();
-            return true;
-        }
-        return false;
-    }
-
-    @Override
-    public boolean onPreferenceChange(Preference preference, Object newValue) {
-        final String key = preference.getKey();
-        boolean value;
-        String strvalue;
-      	value = (Boolean) newValue;
-    	((SwitchPreference)preference).setChecked(value);
-    	setEnable(key,value);       
-	     return true;
-    }
-    
-     private void setSystemPropertyString(String key, String value) {
-        Log.e(TAG, "setSystemPropertyBoolean: key=" + key + ", value=" + value);
-        SystemProperties.set(key, value);
-    }
-
-    private String getSystemPropertyString(String key, String def) {
-        return SystemProperties.get(key,def);
-    }
-
-    private boolean getSystemPropertyBoolean(String key) {
-        if( SystemProperties.get(key,"0").equals("1") || SystemProperties.get(key,"0").equals("true") ) return true;
-	    return false;
-    }
 
     private void setSystemPropertyBoolean(String key, boolean value) {
         String text = value?"1":"0";
-        Log.e(TAG, "setSystemPropertyBoolean: key=" + key + ", value=" + value);
         SystemProperties.set(key, text);
-    }      
+    }
+
+    @Override
+    public boolean onPreferenceChange(Preference preference, Object value) {
+        final String key = preference.getKey();      
+        switch (key) {
+            case DEFAULT_PERF_PROFILE:
+                mDefaultPerfProfile.setValue((String) value);
+                FileUtils.setStringProp(PERFORMANCE_SYSTEM_PROPERTY, (String) value);
+                break;
+                
+            case DEFAULT_THERMAL_PROFILE:
+                mDefaultThermProfile.setValue((String) value);
+                FileUtils.setStringProp(THERMAL_SYSTEM_PROPERTY, (String) value);
+                break;               
+                                
+            default:				
+                break;
+        }
+        return true;				
+    }  
 }
