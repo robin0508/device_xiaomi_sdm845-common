@@ -115,7 +115,6 @@ allow hal_camera_default vendor_usb_prop:file { getattr open };
 allow hal_camera_default vendor_video_prop:file { getattr open };
 allow hal_camera_default vendor_vm_bms_prop:file { getattr open };
 allow hal_camera_default vendor_wifi_ftmd_prop:file { getattr open };
-allow hal_camera_default vendor_wifi_version:file { getattr open };
 allow hal_camera_default vendor_wigig_prop:file { getattr open };
 allow hal_camera_default vendor_xlat_prop:file { getattr open };
 allow hal_camera_default virtual_ab_prop:file { getattr open };
@@ -125,6 +124,5 @@ get_prop(hal_camera_default, camera_ro_prop)
 
 userdebug_or_eng(`
   allow hal_camera_default vendor_pd_locater_dbg_prop:file { getattr open };
-  allow hal_camera_default vendor_wfd_sys_debug_prop:file { getattr open };
   get_prop(hal_camera_default, sensors_dbg_prop)
 ')
