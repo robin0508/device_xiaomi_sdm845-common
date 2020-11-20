@@ -58,3 +58,8 @@
 
 # Kcal
 /sys/module/msm_drm/parameters(/.*)?            u:object_r:kcal_dev:s0
+
+# Displayfeature
+/vendor/bin/hw/vendor\.xiaomi\.hardware\.displayfeature@1\.0-service                                    u:object_r:hal_displayfeature_default_exec:s0
+/(vendor|system/vendor)/bin/displayfeature		u:object_r:displayfeature_exec:s0
+

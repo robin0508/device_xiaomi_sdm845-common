@@ -16,3 +16,7 @@ vendor.xiaomi.hardware.mlipay::IMlipayService                                 u:
 # Dolby
 vendor.dolby.hardware.dms::IDms                                            u:object_r:hal_dms_hwservice:s0
 
+# Display Feature
+vendor.xiaomi.hardware.displayfeature::IDisplayFeature                        u:object_r:hal_displayfeature_hwservice:s0
+
+

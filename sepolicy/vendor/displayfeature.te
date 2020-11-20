@@ -1,0 +1,5 @@
+type displayfeature, domain;
+type displayfeature_exec, exec_type, vendor_file_type, file_type;
+allow displayfeature_exec vendor_displayfeature_prop:file { getattr open read };
+allow displayfeature graphics_device:dir r_dir_perms;
+allow displayfeature graphics_device:chr_file rw_file_perms;

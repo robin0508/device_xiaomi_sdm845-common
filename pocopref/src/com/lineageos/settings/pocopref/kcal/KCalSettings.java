@@ -25,6 +25,7 @@ import android.content.SharedPreferences;
 import androidx.preference.PreferenceManager;
 import androidx.preference.SwitchPreference;
 import android.content.SharedPreferences;
+import vendor.xiaomi.hardware.displayfeature.V1_0.IDisplayFeature;
 import com.lineageos.settings.pocopref.R;
 import com.lineageos.settings.pocopref.CustomSeekBarPreference;
 import com.lineageos.settings.pocopref.SecureSettingListPreference;
@@ -34,6 +35,7 @@ public class KCalSettings extends PreferenceFragment implements
         Preference.OnPreferenceChangeListener, Utils {
 
     private final FileUtils mFileUtils = new FileUtils();
+    private SecureSettingListPreference mXiaomiProfilePreference;
     private SwitchPreference mEnabled;
     private CustomSeekBarPreference mRed;
     private CustomSeekBarPreference mGreen;
@@ -43,6 +45,8 @@ public class KCalSettings extends PreferenceFragment implements
     private CustomSeekBarPreference mContrast;
     private CustomSeekBarPreference mHue;
     private SharedPreferences mPrefs;    
+    private static IDisplayFeature mDisplayFeature;
+     private static String mXiaomiProfile;
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -55,6 +59,10 @@ public class KCalSettings extends PreferenceFragment implements
         mPrefs = PreferenceManager.getDefaultSharedPreferences(getContext());
         
         setPreferencesFromResource(R.xml.preferences_kcal, rootKey);
+
+
+        mXiaomiProfilePreference = (SecureSettingListPreference) findPreference(XIAOMI_DISPLAY_PROFILE);
+        mXiaomiProfilePreference.setOnPreferenceChangeListener(this);
 
         mEnabled =  findPreference(PREF_ENABLED);
         mEnabled.setChecked(mPrefs.getBoolean(KCalSettings.PREF_ENABLED, false));        
@@ -122,6 +130,10 @@ public class KCalSettings extends PreferenceFragment implements
         final String key = preference.getKey();
 
         switch (key) {
+            case XIAOMI_DISPLAY_PROFILE:
+                mXiaomiProfile = value.toString();
+                updateColorOptions(mXiaomiProfile);
+                break;
             case PREF_ENABLED:
                 Boolean enabled = (Boolean) value;
                 mPrefs.edit().putBoolean(PREF_ENABLED, enabled).apply();            
@@ -199,6 +211,28 @@ public class KCalSettings extends PreferenceFragment implements
         mValue.refresh(value);
         mContrast.refresh(contrast);
         mHue.refresh(hue);
-    }   
+    }
+ 
+     void updateColorOptions(String value) {
+          int color = Integer.parseInt(value);
+          if (color == 1) {
+             setScreenEffect( 0, 1);
+         } else if(color == 2) {
+             setScreenEffect( 0, 2);
+         } else if (color == 3) {
+             setScreenEffect( 0, 3);
+         } else if (color == 4) {
+             setScreenEffect( 1, 1);
+         } else if (color == 5) {
+             setScreenEffect( 2, 1);
+         } 
+     }                      
+    public static void setScreenEffect(int mode, int value) {
+        try {
+            mDisplayFeature = IDisplayFeature.getService();
+            mDisplayFeature.setFeature(0, mode, value, 255);
+        } catch(Exception e) {
+        }
+    }    
 }
 

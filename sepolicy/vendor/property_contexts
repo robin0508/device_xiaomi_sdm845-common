@@ -51,3 +51,26 @@ persist.perf.default                           u:object_r:defaultperf_prop:s0
 persist.cpu.thermal.profile                    u:object_r:cputhermal_prop:s0
 persist.cpu.performance.profile                    u:object_r:cpuperf_prop:s0
 
+#displayfeature
+ro.eyecare.brightness.threshold          u:object_r:vendor_displayfeature_prop:s0
+ro.eyecare.brightness.level              u:object_r:vendor_displayfeature_prop:s0
+ro.hist.brightness.threshold             u:object_r:vendor_displayfeature_prop:s0
+ro.displayfeature.histogram.enable       u:object_r:vendor_displayfeature_prop:s0
+persist.df.extcolor.proc                 u:object_r:vendor_displayfeature_prop:s0
+ro.whitepoint_calibration_enable         u:object_r:vendor_displayfeature_prop:s0
+sys.displayfeature.entry.enable          u:object_r:vendor_displayfeature_prop:s0
+persist.displayfeature.dc_backlight.enable    u:object_r:vendor_displayfeature_prop:s0
+persist.displayfeature.dc_backlight.threshold u:object_r:vendor_displayfeature_prop:s0
+persist.fod.modified.dc_status           u:object_r:vendor_displayfeature_prop:s0
+ro.vendor.df.effect.conflict             u:object_r:vendor_displayfeature_prop:s0
+persist.vendor.df.extcolor.proc          u:object_r:vendor_displayfeature_prop:s0
+init.svc.displayfeature-hal-1-0          u:object_r:vendor_displayfeature_prop:s0
+ro.resolution_switch.enabled             u:object_r:vendor_displayfeature_prop:s0
+
+#displayfeature use poll to monitor backlight brightness
+ro.xiaomi.bl.poll                      u:object_r:vendor_displayfeature_prop:s0
+
+#displayfeature hbm enable
+sys.displayfeature.hbm.enable            u:object_r:vendor_displayfeature_prop:s0
+
+

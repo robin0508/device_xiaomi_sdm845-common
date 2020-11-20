@@ -209,6 +209,20 @@ vendor/lib/hw/vendor.qti.hardware.capabilityconfigstore@1.0-impl.so
 vendor/lib/vendor.qti.hardware.capabilityconfigstore@1.0.so
 -vendor/lib/libplatformconfig.so
 
+# Display Feature from  MIUI package V11.0.8.0.QEJMIXM global stable version
+vendor/bin/displayfeature
+vendor/bin/hw/vendor.xiaomi.hardware.displayfeature@1.0-service
+vendor/etc/dsi_ebbg_fhd_ft8719_video_display_mi.xml
+vendor/etc/dsi_tianma_fhd_nt36672a_video_display_mi.xml
+vendor/etc/init/vendor.xiaomi.hardware.displayfeature@1.0-service.rc
+vendor/lib64/hw/displayfeature.default.so
+vendor/lib64/hw/vendor.xiaomi.hardware.displayfeature@1.0-impl.so
+vendor/lib64/libdisplayfeature.so
+vendor/lib64/libdisplayfeatureservice.so
+vendor/lib64/libdrm.so
+vendor/lib64/libgui_vendor.so
+vendor/lib64/vendor.xiaomi.hardware.displayfeature@1.0.so
+
 # Display (HDR) from LA.UM.9.8.r1-02700-SDM710.0
 vendor/lib64/libhdr_tm.so
 vendor/lib/libhdr_tm.so
