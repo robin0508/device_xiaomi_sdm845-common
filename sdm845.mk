@@ -250,10 +250,6 @@ PRODUCT_PACKAGES += \
     ipacm \
     IPACM_cfg.xml
 
-# Lights
-PRODUCT_PACKAGES += \
-    android.hardware.light@2.0-service.xiaomi_sdm845
-
 # Media
 PRODUCT_PACKAGES += \
     libc2dcolorconvert \
