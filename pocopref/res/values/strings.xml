@@ -135,4 +135,36 @@
     <string name="audio_effects_dolby_title">Enable Dolby</string>
     <string name="audio_effects_dolby_summary">Enable systemwide Dolby effect (Requires Reboot )</string>
 
+     <!--  Boost Framework-->
+    <string name="bframework_settings">Boost Framework</string>
+    <string name="bframework_settings_title">Boost Framework Configurations</string>
+    <string name="bframework_settings_summary">Enabling Boost options does affect battery life and performance ( Reboot Required to get values applied)</string>
+    <string name="launch_enabled_title">APP Launch Boost</string>
+    <string name="launch_enabled_summary">Enable Faster Loading of APPS</string>    
+    <string name="anim_enabled_title">Animation Boost</string>
+    <string name="anim_enabled_summary">Enables Animation Boost</string>    
+    <string name="install_enabled_title">Package Install Boost</string>
+    <string name="install_enabled_summary">Enables Boost while installing packages</string>                       
+    <string name="fling_enabled_title">Fling Boost</string>
+    <string name="fling_enabled_summary">Enable SCROLL, Prefilling, Fling Boost</string>    
+    <string name="render_enabled_title">Top-App Render Boost</string>
+    <string name="render_enabled_summary">Enables Render Boost for Top APP</string>    
+    <string name="bgt_enabled_title">BGT Boost</string>
+    <string name="bgt_enabled_summary">Boosts background app transitions, like from cached to forground</string>    
+    <string name="cgroup_enabled_title">Cgroup Follow</string>
+    <string name="cgroup_enabled_summary">Enables process Group to follow Cgroup</string>    	
+    <string name="dex_enabled_title">Dex2oat Follow</string>
+    <string name="dex_enabled_summary">Enables process Group to follow Cgroup for Dex2oat only</string>    
+    <string name="benable_enabled_title">B-Service Propagation</string>
+    <string name="benable_enabled_summary">Enable Background service aging propagation on memory pressure</string>    
+    <string name="tsettings_enabled_title">Trim Settings</string>
+    <string name="tsettings_enabled_summary">Enable Aggressive Memory trim settings</string>    
+    <string name="trim_enable_memory">Trim Memory Limit</string>
+    <string name="trim_cache">Cache Memory Percent</string>
+    <string name="trim_empty">Empty Memory Percent</string>
+    <string name="empty_app">Empty App Memory Percent</string>
+    <string name="bg_apps">Background Apps Limit</string>
+    <string name="bservice_limit">Background Services Limit</string>
+    <string name="bservice_age">Background Age Limit(milliseconds)</string>
+
     </resources>

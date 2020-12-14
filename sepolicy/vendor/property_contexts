@@ -76,4 +76,23 @@ ro.xiaomi.bl.poll                      u:object_r:vendor_displayfeature_prop:s0
 #displayfeature hbm enable
 sys.displayfeature.hbm.enable            u:object_r:vendor_displayfeature_prop:s0
 
+# Boost framework
+persist.vendor.perf.bgt.enable             u:object_r:vendor_boostframework_prop:s0
+persist.vendor.perf.topAppRenderThreadBoost.enable             u:object_r:vendor_boostframework_prop:s0
+persist.vendor.qti.sys.fw.trim_enable_memory             u:object_r:vendor_boostframework_prop:s0
+persist.vendor.qti.sys.fw.trim_cache_percent             u:object_r:vendor_boostframework_prop:s0
+persist.vendor.qti.sys.fw.trim_empty_percent             u:object_r:vendor_boostframework_prop:s0
+persist.vendor.qti.sys.fw.empty_app_percent             u:object_r:vendor_boostframework_prop:s0
+persist.vendor.qti.sys.fw.use_trim_settings             u:object_r:vendor_boostframework_prop:s0
+persist.vendor.qti.sys.fw.bg_apps_limit             u:object_r:vendor_boostframework_prop:s0
+persist.vendor.qti.cgroup_follow.dex2oat_only             u:object_r:vendor_boostframework_prop:s0
+persist.vendor.qti.cgroup_follow.enable             u:object_r:vendor_boostframework_prop:s0
+persist.vendor.qti.sys.fw.bservice_enable             u:object_r:vendor_boostframework_prop:s0
+persist.vendor.qti.sys.fw.bservice_limit             u:object_r:vendor_boostframework_prop:s0
+persist.vendor.qti.sys.fw.bservice_age             u:object_r:vendor_boostframework_prop:s0
+persist.vendor.perf.gestureflingboost.enable             u:object_r:vendor_boostframework_prop:s0
+persist.vendor.perf.launch.boost             u:object_r:vendor_boostframework_prop:s0
+persist.vendor.perf.animation.boost             u:object_r:vendor_boostframework_prop:s0
+persist.vendor.perf.install.boost             u:object_r:vendor_boostframework_prop:s0
+
 

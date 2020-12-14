@@ -44,7 +44,8 @@ public class PocoPrefSettings extends PreferenceFragment implements
 	private static final boolean DEBUG = false;
 	private static final String TAG = "PocoPref";
     public static final String PREF_DEVICE_KCAL = "device_kcal";
-    public static final String CATEGORY_DISPLAY = "display";    
+    public static final String CATEGORY_DISPLAY = "display";
+    public static final String PREF_BFRAMEWORK = "device_bframework";	    
     public static final String DEFAULT_PERF_PROFILE = "default_perf_profile";
     public static final String PERFORMANCE_SYSTEM_PROPERTY = "persist.perf.default";
     public static final String DEFAULT_THERMAL_PROFILE = "default_therm_profile";
@@ -60,6 +61,7 @@ public class PocoPrefSettings extends PreferenceFragment implements
     private SwitchPreference mDolby;
     private SecureSettingListPreference mDefaultPerfProfile;
     private SecureSettingListPreference mDefaultThermProfile;
+    private Preference mBframework;	
     private SwitchPreference mNvtFw;
     private SwitchPreference mNvtESD;
 
@@ -97,6 +99,14 @@ public class PocoPrefSettings extends PreferenceFragment implements
                          return true;
                      }
                 });
+
+             mBframework = findPreference(PREF_BFRAMEWORK);
+
+             mBframework.setOnPreferenceClickListener(preference -> {
+             Intent intent = new Intent(getActivity().getApplicationContext(), BframeworkActivity.class);
+             startActivity(intent);
+             return true;
+             });
 
             mDefaultPerfProfile = (SecureSettingListPreference) findPreference(DEFAULT_PERF_PROFILE);
             mDefaultPerfProfile.setValue(FileUtils.getStringProp(PERFORMANCE_SYSTEM_PROPERTY, "0"));

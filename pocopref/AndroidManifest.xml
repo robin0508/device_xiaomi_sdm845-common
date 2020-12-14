@@ -81,6 +81,17 @@
             android:name="com.lineageos.settings.pocopref.PerformanceService"
             android:permission="PerformanceService">
         </service>
+        <activity
+            android:name="com.lineageos.settings.pocopref.BframeworkActivity"
+            android:exported="false"
+            android:theme="@style/CustomOptionsTheme"
+            android:label="@string/bframework_settings">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>  
         <receiver android:name="com.lineageos.settings.pocopref.Startup" >
             <intent-filter android:priority="100" >
                 <action android:name="android.intent.action.BOOT_COMPLETED" />

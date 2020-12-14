@@ -18,6 +18,21 @@
       </Preference>
   </PreferenceCategory>
 
+    <PreferenceCategory
+        android:title="@string/bframework_settings">
+
+        <Preference
+        android:key="device_bframework"
+        android:persistent="false"
+        android:title="@string/bframework_settings_title"
+        android:summary="@string/bframework_settings_summary">
+        <intent
+        android:action="android.intent.action.MAIN"
+        android:targetClass="com.lineageos.settings.pocopref.BframeworkActivity"
+        android:targetPackage="com.lineageos.settings.pocopref" />
+      </Preference>
+  </PreferenceCategory> 
+
   <PreferenceCategory
         android:title="@string/thermal_title">
 

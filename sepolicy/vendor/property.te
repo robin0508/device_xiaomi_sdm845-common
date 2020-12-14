@@ -21,6 +21,7 @@ compatible_property_only(`
     system_restricted_prop(nvt_prop)
     system_restricted_prop(esd_prop)
     system_restricted_prop(dolby_prop)
+    system_restricted_prop(vendor_boostframework_prop)	
 ')
 
 not_compatible_property(`
@@ -31,5 +32,6 @@ not_compatible_property(`
     system_public_prop(nvt_prop)
     system_public_prop(esd_prop)
     system_public_prop(dolby_prop)
+    system_public_prop(vendor_boostframework_prop)	
 ')
 
